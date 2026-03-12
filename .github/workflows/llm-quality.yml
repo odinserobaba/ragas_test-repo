@@ -37,6 +37,8 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+          # явно без кэша, чтобы шаг не падал из‑за поиска requirements.txt
+          cache: ""
 
       - name: Install dependencies
         run: |
