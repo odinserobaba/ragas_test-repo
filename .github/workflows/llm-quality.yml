@@ -16,7 +16,7 @@ jobs:
       MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
       MISTRAL_MODEL: mistral-small-latest
       MISTRAL_BASE_URL: https://api.mistral.ai/v1
-      RAGAS_CONCURRENCY: "3"
+      RAGAS_CONCURRENCY: "1"
       MIN_FAITHFULNESS: "0.70"
       MIN_ANSWER_RELEVANCY: "0.60"
       MIN_CONTEXT_RECALL: "0.70"

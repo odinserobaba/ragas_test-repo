@@ -1,7 +1,9 @@
+import asyncio
 import os
 from typing import Sequence
 
 from openai import AsyncOpenAI
+from openai import RateLimitError
 
 
 DEFAULT_BASE_URL = "https://api.mistral.ai/v1"
@@ -32,6 +34,7 @@ def _build_prompt(question: str, retrieved_contexts: Sequence[str]) -> str:
 
 async def answer_question(question: str, retrieved_contexts: Sequence[str]) -> str:
     model = os.getenv("MISTRAL_MODEL", DEFAULT_MODEL)
+    max_retries = int(os.getenv("MISTRAL_RATE_LIMIT_RETRIES", "4"))
 
     messages = [
         {
@@ -44,11 +47,18 @@ async def answer_question(question: str, retrieved_contexts: Sequence[str]) -> s
         },
     ]
 
-    resp = await _client().chat.completions.create(
-        model=model,
-        messages=messages,
-        temperature=0.0,
-        top_p=1.0,
-        max_tokens=256,
-    )
-    return (resp.choices[0].message.content or "").strip()
+    for attempt in range(max_retries):
+        try:
+            resp = await _client().chat.completions.create(
+                model=model,
+                messages=messages,
+                temperature=0.0,
+                top_p=1.0,
+                max_tokens=256,
+            )
+            return (resp.choices[0].message.content or "").strip()
+        except RateLimitError:
+            if attempt == max_retries - 1:
+                raise
+            delay = 2 ** (attempt + 1)  # 2, 4, 8, ...
+            await asyncio.sleep(delay)
