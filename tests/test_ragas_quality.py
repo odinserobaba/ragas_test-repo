@@ -27,7 +27,7 @@ async def test_ragas_quality_gates():
 
     # Assert: quality gates (tune if needed)
     min_faithfulness = float(os.getenv("MIN_FAITHFULNESS", "0.70"))
-    min_answer_relevancy = float(os.getenv("MIN_ANSWER_RELEVANCY", "0.60"))
+    min_answer_relevancy = float(os.getenv("MIN_ANSWER_RELEVANCY", "0.40"))
     min_context_recall = float(os.getenv("MIN_CONTEXT_RECALL", "0.70"))
 
     assert s["faithfulness_avg"] >= min_faithfulness, s

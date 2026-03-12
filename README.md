@@ -46,7 +46,7 @@ pytest -q
 В workflow и локально можно менять пороги через переменные окружения:
 
 - `MIN_FAITHFULNESS` (по умолчанию 0.70)
-- `MIN_ANSWER_RELEVANCY` (0.60)
+- `MIN_ANSWER_RELEVANCY` (0.40)
 - `MIN_CONTEXT_RECALL` (0.70)
 
 Если пайплайн “красный” — смотри артефакт `ragas-reports` и подтягивай:

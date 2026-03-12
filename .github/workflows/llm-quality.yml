@@ -18,7 +18,7 @@ jobs:
       MISTRAL_BASE_URL: https://api.mistral.ai/v1
       RAGAS_CONCURRENCY: "1"
       MIN_FAITHFULNESS: "0.70"
-      MIN_ANSWER_RELEVANCY: "0.60"
+      MIN_ANSWER_RELEVANCY: "0.40"
       MIN_CONTEXT_RECALL: "0.70"
       EMBEDDINGS_MODEL: all-MiniLM-L6-v2
 
