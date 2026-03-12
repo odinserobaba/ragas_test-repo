@@ -1,0 +1,83 @@
+[
+  {
+    "id": "alembic_migrations",
+    "user_input": "Какой инструмент используется для миграций базы данных в SQLAlchemy-стеке?",
+    "retrieved_contexts": [
+      "Alembic используется для управления миграциями базы данных в связке с SQLAlchemy."
+    ],
+    "reference": "Для миграций базы данных используется Alembic."
+  },
+  {
+    "id": "fastapi_definition",
+    "user_input": "Что такое FastAPI?",
+    "retrieved_contexts": [
+      "FastAPI — современный Python-фреймворк для создания веб-API."
+    ],
+    "reference": "FastAPI — это современный Python-фреймворк для создания API."
+  },
+  {
+    "id": "rag_definition",
+    "user_input": "Что такое RAG (Retrieval-Augmented Generation)?",
+    "retrieved_contexts": [
+      "RAG — подход, при котором перед генерацией ответа система извлекает релевантные документы из внешнего хранилища и подаёт их в промпт модели."
+    ],
+    "reference": "RAG — это подход, где перед генерацией ответа извлекается релевантный контекст из внешнего хранилища и используется в промпте."
+  },
+  {
+    "id": "langgraph_stategraph",
+    "user_input": "Что такое LangGraph / StateGraph в контексте LLM-систем?",
+    "retrieved_contexts": [
+      "LangGraph позволяет описывать LLM-пайплайн как граф состояний: узлы — функции/шаги, рёбра — переходы, включая условные ветвления и циклы."
+    ],
+    "reference": "LangGraph/StateGraph — это библиотека для описания LLM-систем как графа состояний с узлами-шагами и рёбрами-переходами (в т.ч. условными)."
+  },
+  {
+    "id": "lora_definition",
+    "user_input": "Что такое LoRA?",
+    "retrieved_contexts": [
+      "LoRA (Low-Rank Adaptation) — метод PEFT, где обучаются низкоранговые адаптеры вместо полного обновления весов модели."
+    ],
+    "reference": "LoRA — это метод PEFT, при котором обучаются небольшие low-rank адаптеры вместо полного дообучения модели."
+  },
+  {
+    "id": "faithfulness_definition",
+    "user_input": "Что измеряет метрика Faithfulness в оценке RAG?",
+    "retrieved_contexts": [
+      "Faithfulness проверяет, что утверждения в ответе поддерживаются извлечённым контекстом и модель не добавляет факты вне контекста."
+    ],
+    "reference": "Faithfulness измеряет, насколько ответ опирается на извлечённый контекст и не содержит галлюцинаций (фактов вне контекста)."
+  },
+  {
+    "id": "context_recall_definition",
+    "user_input": "Что такое Context Recall в RAG-оценке?",
+    "retrieved_contexts": [
+      "Context Recall показывает, какая доля фактов/утверждений из эталонного ответа покрывается извлечённым контекстом."
+    ],
+    "reference": "Context Recall — это доля фактов из эталонного ответа, которые поддерживаются извлечённым контекстом."
+  },
+  {
+    "id": "vllm_pagedattention",
+    "user_input": "Что такое PagedAttention в vLLM?",
+    "retrieved_contexts": [
+      "PagedAttention — механизм в vLLM для эффективного управления KV-cache постранично, уменьшающий фрагментацию памяти и повышающий throughput."
+    ],
+    "reference": "PagedAttention — механизм vLLM для постраничного управления KV-cache, снижающий фрагментацию памяти и повышающий эффективность инференса."
+  },
+  {
+    "id": "retries_backoff",
+    "user_input": "Зачем нужны retries и backoff в продакшен-сервисах?",
+    "retrieved_contexts": [
+      "Retries и backoff помогают устойчиво переживать временные ошибки (сетевые, перегрузки), повторяя запросы с увеличением интервалов."
+    ],
+    "reference": "Retries и backoff нужны для устойчивости: повторять запросы при временных ошибках с увеличением паузы между попытками."
+  },
+  {
+    "id": "observability_traces",
+    "user_input": "Что включает observability для LLM-систем?",
+    "retrieved_contexts": [
+      "Observability включает логи, метрики и трейсы (spans) для понимания поведения системы и поиска проблем в проде."
+    ],
+    "reference": "Observability для LLM-систем — это логи, метрики и трейсы, позволяющие понимать поведение системы и диагностировать проблемы."
+  }
+]
+
