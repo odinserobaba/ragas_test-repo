@@ -1,14 +1,14 @@
 ## HW — CI/CD пайплайн с автотестами и проверкой на галлюцинации (RAGAS)
-u
+
 Цель: прогонять **golden-набор** через ваше LLM‑приложение и автоматически ставить **quality gates** по метрикам RAGAS в GitHub Actions.
 
 ---
 
 ## Что внутри
 
-- `hw_cicd_ragas/app.py` — мини‑приложение (QA по контексту) на Mistral через OpenAI‑совместимый endpoint.
+- `app.py` — мини‑приложение (QA по контексту) на Mistral через OpenAI‑совместимый endpoint.
 - `tests/goldens.json` — golden-набор (вопрос + контекст + reference/эталон).
-- `hw_cicd_ragas/ragas_eval.py` — оценка goldens метриками:
+- `ragas_eval.py` — оценка goldens метриками:
   - `Faithfulness` (анти‑галлюцинации),
   - `AnswerRelevancy`,
   - `ContextRecall`.
@@ -51,7 +51,7 @@ pytest -q
 
 Если пайплайн “красный” — смотри артефакт `ragas-reports` и подтягивай:
 
-- промпт в `hw_cicd_ragas/app.py`,
+- промпт в `app.py`,
 - качество/полноту `retrieved_contexts` в `tests/goldens.json`,
 - модель `MISTRAL_MODEL`.
 

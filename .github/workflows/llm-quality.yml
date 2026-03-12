@@ -29,7 +29,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-          cache: "pip"
+          # cache: "pip" требует requirements.txt в корне; отключено, чтобы не падать при его отсутствии
 
       - name: Install dependencies
         run: |

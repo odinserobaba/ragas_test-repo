@@ -10,7 +10,7 @@ from ragas.dataset_schema import SingleTurnSample
 from ragas.llms import llm_factory
 from ragas.metrics.collections import AnswerRelevancy, ContextRecall, Faithfulness
 
-from hw_cicd_ragas.app import DEFAULT_BASE_URL, DEFAULT_MODEL, answer_question
+from app import DEFAULT_BASE_URL, DEFAULT_MODEL, answer_question
 
 try:
     # Older RAGAS versions (and our existing notebook) use this name.
