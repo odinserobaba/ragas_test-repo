@@ -25,7 +25,8 @@ def _build_prompt(question: str, retrieved_contexts: Sequence[str]) -> str:
     ctx = "\n\n---\n\n".join([c.strip() for c in retrieved_contexts if c and c.strip()])
     return (
         "Ты — QA-бот. Отвечай строго по КОНТЕКСТУ ниже. "
-        "Если в контексте нет ответа, скажи: \"Не знаю\".\n\n"
+        "Отвечай полным предложением на основе контекста. "
+        "Пиши «Не знаю» только если в контексте действительно нет информации для ответа на вопрос.\n\n"
         f"КОНТЕКСТ:\n{ctx}\n\n"
         f"ВОПРОС: {question}\n"
         "ОТВЕТ:"
@@ -39,7 +40,7 @@ async def answer_question(question: str, retrieved_contexts: Sequence[str]) -> s
     messages = [
         {
             "role": "system",
-            "content": "Follow the user instructions strictly. Be concise.",
+            "content": "Follow the user instructions strictly. Answer in a complete sentence when the context allows; avoid one-word answers.",
         },
         {
             "role": "user",
