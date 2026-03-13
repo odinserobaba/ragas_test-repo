@@ -8,7 +8,7 @@ on:
 jobs:
   ragas-tests:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     env:
       # Убрать предупреждение про Node.js 20 (deprecation)
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
@@ -17,6 +17,7 @@ jobs:
       MISTRAL_MODEL: mistral-small-latest
       MISTRAL_BASE_URL: https://api.mistral.ai/v1
       RAGAS_CONCURRENCY: "1"
+      RAGAS_DELAY_BETWEEN_SAMPLES: "2"
       MIN_FAITHFULNESS: "0.70"
       MIN_ANSWER_RELEVANCY: "0.40"
       MIN_CONTEXT_RECALL: "0.70"

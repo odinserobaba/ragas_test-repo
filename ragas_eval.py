@@ -106,13 +106,19 @@ async def evaluate_one(g: Golden) -> SampleResult:
 
 
 async def evaluate_all(goldens: Sequence[Golden], concurrency: int = 3) -> List[SampleResult]:
+    delay_s = float(os.getenv("RAGAS_DELAY_BETWEEN_SAMPLES", "0"))
     sem = asyncio.Semaphore(concurrency)
 
     async def _run(g: Golden) -> SampleResult:
         async with sem:
             return await evaluate_one(g)
 
-    return list(await asyncio.gather(*[_run(g) for g in goldens]))
+    results: List[SampleResult] = []
+    for i, g in enumerate(goldens):
+        if i > 0 and delay_s > 0:
+            await asyncio.sleep(delay_s)
+        results.append(await _run(g))
+    return results
 
 
 def summarize(results: Iterable[SampleResult]) -> dict[str, float]:

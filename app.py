@@ -35,7 +35,7 @@ def _build_prompt(question: str, retrieved_contexts: Sequence[str]) -> str:
 
 async def answer_question(question: str, retrieved_contexts: Sequence[str]) -> str:
     model = os.getenv("MISTRAL_MODEL", DEFAULT_MODEL)
-    max_retries = int(os.getenv("MISTRAL_RATE_LIMIT_RETRIES", "4"))
+    max_retries = int(os.getenv("MISTRAL_RATE_LIMIT_RETRIES", "6"))
 
     messages = [
         {
@@ -61,5 +61,5 @@ async def answer_question(question: str, retrieved_contexts: Sequence[str]) -> s
         except RateLimitError:
             if attempt == max_retries - 1:
                 raise
-            delay = 2 ** (attempt + 1)  # 2, 4, 8, ...
+            delay = 3 * (2 ** attempt)  # 3, 6, 12, 24, 48, 96 сек
             await asyncio.sleep(delay)
