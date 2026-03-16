@@ -4,9 +4,9 @@
   
 ---
 
-## Что внутри
 
-- `app.py` — мини‑приложение (QA по контексту) на Mistral через OpenAI‑совместимый endpoint.
+
+- `app.py` 
 - `tests/goldens.json` — golden-набор (вопрос + контекст + reference/эталон).
 - `ragas_eval.py` — оценка goldens метриками:
   - `Faithfulness` (анти‑галлюцинации),
@@ -30,16 +30,7 @@ pytest -q
 
 Результат будет в `reports/ragas_results.json`.
 
----
 
-## Запуск в GitHub Actions
-
-1. Запушь репозиторий на GitHub.
-2. Добавь секрет: `Settings → Secrets and variables → Actions → New repository secret`:
-   - `MISTRAL_API_KEY`
-3. Сделай `git push` — workflow стартует сам.
-
----
 
 ## Настройка порогов (quality gates)
 
@@ -48,14 +39,3 @@ pytest -q
 - `MIN_FAITHFULNESS` (по умолчанию 0.70)
 - `MIN_ANSWER_RELEVANCY` (0.40)
 - `MIN_CONTEXT_RECALL` (0.70)
-
-Если пайплайн “красный” — смотри артефакт `ragas-reports` и подтягивай:
-
-- промпт в `app.py`,
-- качество/полноту `retrieved_contexts` в `tests/goldens.json`,
-- модель `MISTRAL_MODEL`.
-
----
-
-**Теги:** #hw #cicd #tests #ragas #evaluation
-
